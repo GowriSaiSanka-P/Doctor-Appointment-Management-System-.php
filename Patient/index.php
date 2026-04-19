@@ -2,7 +2,10 @@
 <<?php
 session_start();
 include('includes/dbconnection.php');
-error_reporting(0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+//error_reporting(0);
 if (!isset($_SESSION['damsid']) || $_SESSION['damsid'] == 0) {
     header("Location: user_login.php");
     exit;
@@ -220,17 +223,12 @@ while($row =$stmt->fetch()) {
 <?php }?>
 </select>
 </div>
-
-
     <div class="col-lg-6 col-12">
 <select name="doctorlist" id="doctorlist" class="form-control">
 <option value="">Select Doctor</option>
 </select>
 </div>
-
-
-
-                                        <div class="col-12">
+<div class="col-12">
                                             <textarea class="form-control" rows="5" id="message" name="message" placeholder="Additional Message"></textarea>
                                         </div>
 
@@ -249,10 +247,22 @@ while($row =$stmt->fetch()) {
         </main>
         <?php include_once('includes/footer.php');?>
         <!-- JAVASCRIPT FILES -->
-       <script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.bundle.min.js"></script>
-<script src="../js/owl.carousel.min.js"></script>
-<script src="../js/scrollspy.min.js"></script>
-<script src="../js/custom.js"></script>
+       <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/scrollspy.min.js"></script>
+<script src="js/custom.js"></script>
+<script>
+function getdoctors(val) {
+    $.ajax({
+        type: "POST",
+        url: "get_doctors.php",
+        data: { sp_id: val },
+        success: function(data) {
+            $("#doctorlist").html(data);
+        }
+    });
+}
+</script>
     </body>
 </html>
