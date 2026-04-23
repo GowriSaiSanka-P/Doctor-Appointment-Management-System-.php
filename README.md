@@ -59,7 +59,7 @@ dams/
 
 Installation Guide
 
-1. Clone the Project using git clone https://github.com/GowriSaiSanka-P/Doctor-Appointment-Management-System-.php
+1. Clone the Project using git clone (https://github.com/GowriSaiSanka-P/Doctor-Appointment-Management-System-.php/tree/master)
 2. Move the folder inside: htdocs (XAMPP)
 3. Setup Database
  Open phpMyAdmin
